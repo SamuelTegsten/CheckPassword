@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="CommonCodes.js" defer></script>
+    <script src="CodeFinder.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <h1>Code Finder</h1>
+    <label for="codeInput">Enter the password to find:</label>
+    <input type="text" id="codeInput">
+    <button onclick="findCode()">Find Password</button>
+    <p id="result"></p>
+</div>
+</body>
+</html>
+
+
+<script>
+    function findCode() {
+        const targetCode = document.getElementById("codeInput").value;
+        const startTime = performance.now();
+
+        // Check if the code exists in CommonCodes
+        if (commonCodes.contains(targetCode)) {
+            const endTime = performance.now();
+            const timeTaken = endTime - startTime;
+            document.getElementById("result").textContent = `Found password ${targetCode} in list. Time taken: ${timeTaken} milliseconds.`;
+            return;
+        }
+
+        // If not found in CommonCodes, try CodeFinder
+        const foundCode = findCodeAlgorithm(targetCode);
+        const endTime = performance.now();
+        const timeTaken = endTime - startTime;
+
+        if (foundCode) {
+            document.getElementById("result").textContent = `Found password: ${foundCode}. Time taken: ${timeTaken} milliseconds.`;
+        } else {
+            document.getElementById("result").textContent = `password not found. Time taken: ${timeTaken} milliseconds.`;
+        }
+    }
+</script>
