@@ -1,3 +1,4 @@
+//CodeFinder.js
 function findCodeAlgorithm(targetCode) {
     let currentCode = "";
     const maxLength = targetCode.length;

@@ -14,11 +14,14 @@
     <label for="codeInput">Enter the password to find:</label>
     <input type="text" id="codeInput">
     <button onclick="findCode()">Find Password</button>
+    <div id="loadingBarContainer">
+        <div id="loadingBar"></div>
+        <div id="loadingText">Loading password files 0%</div>
+    </div>
     <p id="result"></p>
 </div>
 </body>
 </html>
-
 
 <script>
     function findCode() {
